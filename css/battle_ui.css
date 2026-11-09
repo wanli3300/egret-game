@@ -1,0 +1,75 @@
+/* Phase 2 battle UI skin - off-white paper, sea-teal, a little gold, egret feather.
+   Scoped to in-battle elements only (#hud, #cardLayer, #overlay). Home / saves / level select are untouched.
+   Assets: assets/ui/* sliced from pack 07_ui; all text, numbers and focus are real DOM. */
+#wrap{--bu-ink:#173f49;--bu-teal:#1e6d77;--bu-teal-2:#3a9aa2;--bu-gold:#c8a25a;--bu-paper:#f7f3e8;--bu-blue:#2f63a6;--bu-purple:#6d43a0;--bu-red:#b03a2e}
+
+/* ---------------- HUD ---------------- */
+#wrap #hud #stats{left:20px;top:16px;padding:11px 16px 10px 74px;border-radius:14px;
+  background:linear-gradient(180deg,rgba(251,249,242,.96),rgba(240,236,224,.94));
+  border:1.5px solid var(--bu-teal);box-shadow:inset 0 0 0 3px rgba(251,249,242,.9),inset 0 0 0 4px rgba(200,162,90,.75),0 6px 18px rgba(12,44,54,.18)}
+#wrap #hud #stats::before{content:'';left:6px;top:50%;width:60px;height:60px;transform:translateY(-50%);border-radius:50%;
+  background:url('../assets/ui/egret_medallion.webp') center/contain no-repeat;box-shadow:0 0 0 2px var(--bu-gold),0 2px 6px rgba(12,44,54,.25);font-size:0}
+#wrap #hud #statName{font:700 12px "Microsoft YaHei UI","Microsoft YaHei",sans-serif;letter-spacing:3px;color:var(--bu-ink);margin-bottom:7px}
+#wrap #hud .bar{width:220px;height:12px;border-radius:7px;border:1px solid rgba(200,162,90,.9);background:rgba(23,63,73,.12);margin-bottom:6px;overflow:hidden;box-shadow:inset 0 1px 2px rgba(0,0,0,.15)}
+#wrap #hud #hpFill{background:linear-gradient(180deg,#d9705f,#a8352b);box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
+#wrap #hud #mpFill{background:linear-gradient(180deg,#5cc0d0,#226f8f);box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
+#wrap #hud .barNum{font:700 9px/12px Consolas,"Microsoft YaHei UI",monospace;color:#fffdf6;text-shadow:0 1px 1px rgba(0,0,0,.45);left:8px}
+#wrap #hud #aspeed{font:11px "Microsoft YaHei UI","Microsoft YaHei",sans-serif;color:#4c6e74;letter-spacing:1px}
+#wrap #hud #kills{border-radius:12px;background:linear-gradient(180deg,rgba(251,249,242,.96),rgba(240,236,224,.94));border:1.5px solid var(--bu-teal);
+  box-shadow:inset 0 0 0 3px rgba(251,249,242,.9),inset 0 0 0 4px rgba(200,162,90,.7),0 6px 18px rgba(12,44,54,.16);color:var(--bu-ink);left:338px}
+#wrap #hud #lvlBuffs{left:338px}
+#wrap #hud #waveTitle{font:600 26px "Microsoft YaHei UI","Microsoft YaHei",sans-serif;letter-spacing:10px;color:var(--bu-ink);padding:12px 34px;border-radius:30px;
+  background:linear-gradient(180deg,rgba(251,249,242,.95),rgba(236,242,236,.92));border:1.5px solid var(--bu-teal);box-shadow:inset 0 0 0 3px rgba(251,249,242,.9),inset 0 0 0 4px rgba(200,162,90,.75),0 8px 22px rgba(12,44,54,.2)}
+#wrap #hud #combo{color:#fff7e3;background:linear-gradient(180deg,#2a8792,#175863);border:1.5px solid var(--bu-gold);box-shadow:0 4px 12px rgba(12,44,54,.3)}
+#wrap #hud #tip{background:rgba(16,52,62,.78);color:#e3f3ef;border:1px solid rgba(200,162,90,.45);border-radius:8px}
+#wrap #hud #btnPause{width:52px;height:52px;padding:0;border:0;border-radius:50%;font-size:0;color:transparent;top:14px;right:18px;
+  background:url('../assets/ui/pause.webp') center/contain no-repeat;box-shadow:0 4px 12px rgba(12,44,54,.25);transition:transform .12s,filter .12s}
+#wrap #hud #btnPause:hover{filter:brightness(1.08);transform:translateY(-1px)}
+#wrap #hud #btnPause:active{transform:scale(.94)}
+#wrap #hud #btnPause:focus-visible,#wrap #hud #btnPause.gamepadFocused{outline:0;box-shadow:0 0 0 3px #f3d48a,0 0 14px rgba(243,212,138,.8)}
+
+/* ---------------- shared buttons (battle layers only) ---------------- */
+#wrap #overlay .btn,#wrap #cardLayer #cardBtns button{font:600 15px "Microsoft YaHei UI","Microsoft YaHei",sans-serif!important;letter-spacing:3px;min-width:168px;padding:13px 28px;
+  color:var(--bu-ink);border:0;border-radius:0;clip-path:none;box-shadow:none;background:url('../assets/ui/btn.webp') center/100% 100% no-repeat;transition:transform .1s ease,filter .12s}
+#wrap #overlay .btn.primary,#wrap #cardLayer #cardBtns #btnRefresh{color:#f6fbf8;background-image:url('../assets/ui/btn_primary.webp');text-shadow:0 1px 1px rgba(0,0,0,.3)}
+#wrap #overlay .btn:hover,#wrap #cardLayer #cardBtns button:hover{background-image:url('../assets/ui/btn_hover.webp');color:var(--bu-ink);text-shadow:none;transform:translateY(-2px)}
+#wrap #overlay .btn:active,#wrap #cardLayer #cardBtns button:active,#wrap #overlay .btn.pressed,#wrap #cardLayer #cardBtns button.pressed{transform:translateY(1px) scale(.97);filter:brightness(.92)}
+#wrap #overlay .btn:disabled,#wrap #cardLayer #cardBtns button:disabled{background-image:url('../assets/ui/btn_disabled.webp');color:#7d8487;text-shadow:none;transform:none;filter:none;cursor:not-allowed}
+#wrap #overlay .btn:focus-visible,#wrap #overlay .btn.gamepadFocused,#wrap #cardLayer #cardBtns button:focus-visible,#wrap #cardLayer #cardBtns button.gamepadFocused{outline:0;filter:drop-shadow(0 0 2px #f3d48a) drop-shadow(0 0 7px rgba(243,212,138,.85))}
+
+/* ---------------- level-up cards: live blurred battle scene behind ---------------- */
+#wrap #cardLayer{background:linear-gradient(180deg,rgba(236,242,236,.30),rgba(18,62,72,.30));backdrop-filter:blur(7px) saturate(1.05);-webkit-backdrop-filter:blur(7px)}
+#wrap #cardLayer::before{display:none}
+#wrap #cardLayer #cardHead{width:auto;height:auto;margin:26px 0 0;background:none;mix-blend-mode:normal;filter:none;font:600 34px "Microsoft YaHei UI","Microsoft YaHei",sans-serif!important;letter-spacing:14px;text-indent:14px;color:var(--bu-ink);text-shadow:0 1px 0 rgba(255,255,255,.7)}
+#wrap #cardLayer #cardSub{font:14px "Microsoft YaHei UI","Microsoft YaHei",sans-serif!important;letter-spacing:4px;color:#2f5b63;margin:6px 0 18px}
+#wrap #cardLayer .upCard{width:224px;height:334px;border:0;border-radius:0;background:url('../assets/ui/card_common.webp') center/100% 100% no-repeat;box-shadow:none;
+  filter:drop-shadow(0 10px 16px rgba(12,44,54,.22));padding:34px 24px 26px;--rarity-ink:#3d4a4c;--rarity-rgb:61,74,76}
+#wrap #cardLayer .upCard::before,#wrap #cardLayer .upCard::after,#wrap #cardLayer .upCard .cCorner{display:none!important}
+#wrap #cardLayer .upCard.rare-稀有{background-image:url('../assets/ui/card_rare.webp');--rarity-ink:var(--bu-blue);--rarity-rgb:47,99,166}
+#wrap #cardLayer .upCard.rare-史诗{background-image:url('../assets/ui/card_epic.webp');--rarity-ink:var(--bu-purple);--rarity-rgb:109,67,160}
+#wrap #cardLayer .upCard.rare-传说{background-image:url('../assets/ui/card_legend.webp');--rarity-ink:var(--bu-red);--rarity-rgb:176,58,46}
+#wrap #cardLayer .upCard .cRare{font:700 13px "Microsoft YaHei UI","Microsoft YaHei",sans-serif!important;letter-spacing:6px;color:#fff;background:rgb(var(--rarity-rgb));padding:3px 12px;border-radius:12px;margin:4px 0 14px;text-shadow:none}
+#wrap #cardLayer .upCard .cName{font:900 40px KaiTi,STKaiti,serif!important;letter-spacing:6px;color:var(--rarity-ink);margin:0 0 8px;text-shadow:none}
+#wrap #cardLayer .upCard .cVal{font:600 13px "Microsoft YaHei UI","Microsoft YaHei",sans-serif!important;color:#3b5258;background:rgba(var(--rarity-rgb),.10);border-radius:10px;padding:4px 12px}
+#wrap #cardLayer .upCard .cLine{width:70%;height:1px;background:linear-gradient(90deg,transparent,var(--bu-gold),transparent);margin:16px auto 12px}
+#wrap #cardLayer .upCard .cDesc{font:600 16px/1.55 "Microsoft YaHei UI","Microsoft YaHei",sans-serif!important;color:#2b3436;letter-spacing:1px}
+#wrap #cardLayer .upCard:hover{transform:translateY(-8px)}
+#wrap #cardLayer .upCard:focus-visible,#wrap #cardLayer .upCard.gamepadFocused{outline:0;transform:translateY(-8px);filter:drop-shadow(0 0 3px #f3d48a) drop-shadow(0 0 10px rgba(243,212,138,.9)) drop-shadow(0 10px 16px rgba(12,44,54,.22))}
+
+/* ---------------- pause / victory / defeat: panel over the live blurred scene ---------------- */
+#wrap #overlay{background:linear-gradient(180deg,rgba(10,40,48,.18),rgba(10,40,48,.42));backdrop-filter:blur(6px) saturate(1.05);-webkit-backdrop-filter:blur(6px);color:var(--bu-ink);isolation:isolate}
+#wrap #overlay::before{display:none}
+#wrap #overlay #inkPausePanel{width:700px;height:auto;min-height:360px;padding:44px 64px 40px;justify-content:center}
+#wrap #overlay #inkPausePanel::before{inset:0;background:none;-webkit-mask-image:none;mask-image:none;border:30px solid transparent;
+  border-image:url('../assets/ui/panel.webp') 60 fill / 30px stretch;filter:drop-shadow(0 16px 30px rgba(8,30,38,.35))}
+#wrap #overlay #inkPausePanel::after{inset:10px;background:rgba(247,243,232,.6);filter:blur(18px);opacity:.6}
+.map-night #wrap #overlay #inkPausePanel::before{background-color:transparent}
+#wrap #hud .gamepadFocused,#wrap #overlay .gamepadFocused,#wrap #cardLayer .gamepadFocused{outline:0!important;box-shadow:none!important}
+#wrap #overlay #audioRow,#wrap #overlay #audioRow *{color:var(--bu-ink)}
+#wrap #overlay #ovTag,#wrap #overlay.ink-pause #ovTag{width:auto;height:auto;background:none;mix-blend-mode:normal;filter:none;transform:none;
+  font:700 15px "Microsoft YaHei UI","Microsoft YaHei",sans-serif!important;letter-spacing:12px;text-indent:12px;color:var(--bu-teal);margin:0 0 4px}
+#wrap #overlay #ovTitle{font:900 38px KaiTi,STKaiti,serif!important;letter-spacing:5px;color:var(--bu-ink);text-shadow:none;filter:none;mix-blend-mode:normal}
+#wrap #overlay #ovSub{font:600 14px "Microsoft YaHei UI","Microsoft YaHei",sans-serif!important;letter-spacing:2px;color:#4f6f74;margin:6px 0 18px;filter:none;mix-blend-mode:normal}
+.map-night #wrap #hud #stats,.map-night #wrap #hud #kills,.map-night #wrap #hud #waveTitle{background:linear-gradient(180deg,rgba(16,48,60,.95),rgba(10,36,46,.94));color:#e3f3ef}
+.map-night #wrap #hud #statName,.map-night #wrap #hud #aspeed{color:#cfe8e4}
+@media (prefers-reduced-motion: reduce){#wrap #overlay .btn,#wrap #cardLayer #cardBtns button,#wrap #cardLayer .upCard,#wrap #hud #btnPause{transition:none!important;animation:none!important}}
